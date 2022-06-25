@@ -25,12 +25,6 @@ class CreateBiodatasTable extends Migration
             $table->string('agama');
             $table->string('nama_ayah');
             $table->string('nama_ibu');
-
-            $table->foreign('id_biodata')
-                ->references('id_biodata')
-                ->on('user')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
             $table->timestamps();
         });
     }
