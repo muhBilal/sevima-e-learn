@@ -38,9 +38,6 @@
 
 
     </div>
-    <div class="bg-bblue w-24 rounded-2xl mt-14 ml-2 px-2 py-2 ">
-        <a href="/home" class="flex text-center text-bwhite font-bold"><i data-feather="chevron-left" class="mr-1 text-bwhite "></i> Back</a>
-    </div>
 </div>
 
 @endsection
