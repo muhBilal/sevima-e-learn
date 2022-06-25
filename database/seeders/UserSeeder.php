@@ -16,9 +16,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+
         User::Create([
-            // 'id' => 2,
-            'name' => 'Bilal',
+            'name' => 'Muhammad Bilal',
             'level' => 'siswa',
             'grade_id' => '1',
             'email' => 'bilal@gmail.com',
@@ -32,25 +32,26 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password')
         ]);
-        // user detail
+
         Biodata::Create([
-            'user_id' => 2,
+            'user_id' => 1,
             'slug' => 'muhammad-bilal',
             'tgl_lahir' => 'Surabaya, 9 Mei 2004',
             'nisn' => '988123098',
             'no_hp' => '0815456798129',
             'jenis_kelamin' => 'laki-laki',
             'agama' => 'islam',
-            'nama_ayah' => 'Ini nama ayahnya',
-            'nama_ibu' => 'ini nama ibunya'
+            'nama_ayah' => 'suwarno',
+            'nama_ibu' => 'karti'
         ]);
 
         $faker = \Faker\Factory::create();
 
         $total = User::count();
 
-        for ($i = $total + 1; $i <= $total + 8; $i++) {
+        for ($i = $total + 1; $i <= $total + 10; $i++) {
             $user = User::Create([
+                // 'id' => $i,
                 'name' => $faker->name,
                 'level' => 'siswa',
                 'grade_id' => '2',

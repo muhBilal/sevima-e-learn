@@ -26,25 +26,11 @@ use App\Http\Controllers\DashboardMotivasiController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    if (Auth::user()) {
-        if (auth()->user()->level == 'guru') { // Role Guru
-            return redirect()->intended('dashboard');
-        } elseif (auth()->user()->level == 'siswa') { // Role siswa
-            return redirect()->intended('home');
-        }
-    }
-    return view('layouts.index', [
-        'title' => ' '
-    ]);
-});
-
 require __DIR__ . '/auth.php';
 Route::post('/logout', [LogoutController::class, 'logout']);
 Route::group(['middleware' =>  ['auth', 'ceklevel:siswa']], function () {
 
-    Route::get('/home', [HomeController::class, 'index'])
+    Route::get('/', [HomeController::class, 'index'])
         ->name('home');
 
     Route::get('/subject/{subject:slug}', [SubjectController::class, 'index']);

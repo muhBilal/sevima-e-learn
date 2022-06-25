@@ -46,5 +46,7 @@ class DatabaseSeeder extends Seeder
 
             Ketika Anda terpuruk akan hal yang selalu Anda buat gagal dan juga tidak pernah sempurna. Jangan menyerah, karena esensi atau sifat alami manusia memang jauh dari kesempurnaan. Sehingga jangan putus asa dan terus berusaha menggapai apa yang Anda targetkan.'
         ]);
+
+        // \App\Models\Biodata::factory(5)->create();
     }
 }

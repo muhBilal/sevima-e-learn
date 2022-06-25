@@ -15,6 +15,14 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('judul');
+            $table->string('slug')->unique();
+            $table->string('image')->nullable();
+            $table->integer('bab');
+            $table->text('body');
+            $table->boolean('tipe')->default(0);// 0 = false untuk materi, 1 = true untuk tugas
+            $table->unsignedBigInteger('subject_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

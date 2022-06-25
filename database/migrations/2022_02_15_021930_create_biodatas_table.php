@@ -15,6 +15,16 @@ class CreateBiodatasTable extends Migration
     {
         Schema::create('biodatas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('slug')->unique();
+            $table->string('image')->nullable();
+            $table->string('tgl_lahir');
+            $table->integer('nisn');
+            $table->string('no_hp');
+            $table->string('jenis_kelamin');
+            $table->string('agama');
+            $table->string('nama_ayah');
+            $table->string('nama_ibu');
             $table->timestamps();
         });
     }
