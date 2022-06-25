@@ -16,7 +16,26 @@ use App\Http\Controllers\DashboardPresensiController;
 use App\Http\Controllers\DashboardTaskController;
 use App\Http\Controllers\DashboardMotivasiController;
 
-// Route::get('/', 'AuthenticatedSessionController::class, create');
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    if (Auth::user()) {
+        if (auth()->user()->level == 'guru') { // Role Guru
+            return redirect()->intended('dashboard');
+        } elseif (auth()->user()->level == 'siswa') { // Role siswa
+            return redirect()->intended('dashboard');
+        }
+    }
+});
 
 require __DIR__ . '/auth.php';
 Route::post('/logout', [LogoutController::class, 'logout']);

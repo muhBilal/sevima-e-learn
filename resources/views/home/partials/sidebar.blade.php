@@ -1,8 +1,8 @@
 <aside class="w-64" aria-label="Sidebar-10">
     <div class="overflow-y-auto fixed px-6 py-10 shadow-xl rounded dark:bg-gray-800 w-64" style="height: 100%">
         <div class="flex pb-7">
-            <img src="{{ asset('img/logo.png') }}" class="w-10 mr-2" alt="">
-            <a href="index.html" class="text-black text-2xl font-semibold uppercase">BeSmart</a>
+            <img src="{{ asset('img/bsmart.png') }}" class="w-14 mr-2" alt="">
+            <a href="index.html" class="text-black text-2xl font-semibold uppercase mt-2">E-Learn</a>
         </div>
 
        <ul class="space-y-2 text-gray mt-10">

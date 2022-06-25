@@ -1,14 +1,9 @@
 <aside class="relative bg-white h-screen w-64 hidden sm:block shadow-xl z-10">
     <div class="flex py-4 pl-6">
         <img src="{{ asset('img/logo.png') }}" class="w-20 mr-2" alt="">
-        <a href="index.html" class="text-black text-2xl font-semibold uppercase hover:text-gray-300">BeSmart</a>
+        <a href="index.html" class="text-black text-2xl font-semibold">E-Learn</a>
     </div>
     <nav class="text-white text-base font-semibold pt-3 px-2">
-
-        {{-- <a href="/dashboard" data-turbolink="true" class="flex my-1 items-center text-black opacity-75 hover:opacity-100 hover:text-white py-4 pl-6 nav-item rounded-2xl {{ Request::is('dashboard') ? 'active-nav-link text-white' : '' }}">
-            <i class="fas fa-tachometer-alt mr-3"></i>
-            Dashboard
-        </a> --}}
         <a href="/dashboard" data-turbolink="true" class="flex my-1 items-center text-black opacity-75 hover:opacity-100 hover:text-white py-4 pl-6 nav-item rounded-2xl {{ Request::is('dashboard') ? 'active-nav-link text-white' : '' }}">
             <i class="fas fa-tachometer-alt mr-3 ml-1"></i>
             Dashboard

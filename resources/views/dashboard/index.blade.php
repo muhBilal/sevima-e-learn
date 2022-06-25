@@ -10,7 +10,7 @@
                     <p>{{ $count['user'] }} </p>
                 </div>
                 <div class="ml-10">
-                    <img src="{{ asset('img/user-profille.png') }} " alt="">
+                    <img src="{{ asset('img/user-profille-1.png') }} " alt="">
                 </div>
             </div>
             {{-- materi --}}

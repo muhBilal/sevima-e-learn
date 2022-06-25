@@ -3,6 +3,8 @@
 
 @section('DashboardContent')
 <div class="overflow-x-auto">
+  <h1 class="text-3xl font-bold">Biodata</h1>
+
     <table class="table w-full mb-5">
       <!-- head -->
       <thead>
@@ -11,24 +13,23 @@
           <th>Nama</th>
           <th>NISN</th>
           <th>TTL</th>
-          <th>Gambar</th>
+          {{-- <th>Gambar</th> --}}
         </tr>
       </thead>
       <tbody>
         @foreach ($biodata as $data)
-
         <tr>
             <th>{{ $data->user->id }}</th>
             <td>{{ $data->user->name }}</td>
             <td>{{ $data->nisn }}</td>
             <td>{{ $data->tgl_lahir }}</td>
-            <td>
+            {{-- <td class="">
                     @if($data->image)
                     <img src="{{ asset('storage/' . $data->image) }}" class="lg:w-20 md:w-16 sm:w-7 w-6" alt="">
                     @else
                     <img src="/img/user-profille.png" class="lg:w-20 md:w-16 sm:w-7 w-6" alt="">
                     @endif
-            </td>
+            </td> --}}
         </tr>
         @endforeach
     </tbody>
