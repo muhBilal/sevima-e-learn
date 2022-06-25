@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="mt-7">
+    <div class="mt-7 mx-14">
         <h1 class="font-bold font-bserif lg:text-4xl md:text-3xl sm:text-2xl text-xl lg:mt-10 md:mt-9 sm:mt-8 mt-7 mb-3">
         Tugas</h1>
         <div class="flex sm:flex-row flex-col sm:flex-wrap">

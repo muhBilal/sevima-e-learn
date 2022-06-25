@@ -29,10 +29,10 @@ use App\Http\Controllers\DashboardMotivasiController;
 
 Route::get('/', function () {
     if (Auth::user()) {
-        if (auth()->user()->level == 'guru') { // Role Guru
-            return redirect()->intended('dashboard');
-        } elseif (auth()->user()->level == 'siswa') { // Role siswa
-            return redirect()->intended('dashboard');
+        if (auth()->user()->level == 'guru') {
+            return redirect()->intended('/dashboard');
+        } elseif (auth()->user()->level == 'siswa') { 
+            return redirect()->intended('/home');    
         }
     }
 });
@@ -41,7 +41,7 @@ require __DIR__ . '/auth.php';
 Route::post('/logout', [LogoutController::class, 'logout']);
 Route::group(['middleware' =>  ['auth', 'ceklevel:siswa']], function () {
 
-    Route::get('/', [HomeController::class, 'index'])
+    Route::get('/home', [HomeController::class, 'index'])
         ->name('home');
 
     Route::get('/subject/{subject:slug}', [SubjectController::class, 'index']);
