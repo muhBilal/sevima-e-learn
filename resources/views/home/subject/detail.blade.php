@@ -17,13 +17,13 @@
                 @endif
 
                 <div class="flex gap-10">
-                    <div class="block">
+                    <div class="block w-[180%]">
                         <h1 class="mb-1 font-bold text-3xl ml-6">{{ $posts->judul }}</h1>
                         <p class="ml-6 text-base text-gray-500">Dibuat oleh {{ $posts->author->name }}
                             {{ $posts->created_at->diffForHumans() }}
                         <div class="w-full bg-bblue h-px my-6 min-w-full"></div>
 
-                        <article class="my-3 fs-5">
+                        <article class="my-3 fs-5 text-justify">
                             {!! $posts->body !!}
                         </article>
 
@@ -41,7 +41,7 @@
                             @foreach ($posts->chats as $item)
                                 <div class="flex gap-x-5 my-4">
                                     <div>
-                                        <img src="{{ asset('img/user-profille.png') }}">
+                                        <img src="{{ asset('img/user-profille.png') }}" class="w-14">
                                     </div>
                                     <div>
                                         <h3 class="font-semibold">{{ $item->user->name }}</h3>

@@ -14,13 +14,13 @@ class DashboardMateriController extends Controller
     public function index()
     {
         return view('dashboard.materi.index', [
-            'posts' => Post::where('user_id', auth()->user()->id)->where('tipe', 0)->with('subject')->get()
+            'posts' => Post::where('tipe', 0)->with('subject')->get()
         ]);
     }
 
     public function create()
     {
-        $subject = Subject::where('grade_id', auth()->user()->grade_id)->get();
+        $subject = Subject::get();
         return view('dashboard.materi.create', [
             'subjects' => $subject
         ]);
@@ -58,7 +58,7 @@ class DashboardMateriController extends Controller
 
     public function edit(Post $post)
     {
-        $subject = Subject::where('grade_id', auth()->user()->grade_id)->get();
+        $subject = Subject::get();
         return view('dashboard.materi.edit', [
             'post' => $post,
             'subjects' => $subject

@@ -1,4 +1,3 @@
-{{-- @dd($post->subject->slug) --}}
 @extends('layouts.default')
 
 @section('content')

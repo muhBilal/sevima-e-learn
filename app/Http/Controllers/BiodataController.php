@@ -7,6 +7,7 @@ use App\Models\Biodata;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
+
 class BiodataController extends Controller
 {
     public function index(){

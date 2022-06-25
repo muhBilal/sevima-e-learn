@@ -12,14 +12,16 @@ class DashboardTaskController extends Controller
 {
     public function index()
     {
+        $tugas = Post::where('tipe', 1)->with('subject')->get();
         return view('dashboard.tugas.index', [
-            'posts' => Post::where('user_id', auth()->user()->id)->where('tipe', 1)->with('subject')->get()
+            'posts' => $tugas
         ]);
     }
 
     public function create()
     {
-        $subject = Subject::where('grade_id', auth()->user()->grade_id)->get();
+        // $subject = Subject::where('grade_id', auth()->user()->grade_id)->get();
+        $subject = Subject::get();
         return view('dashboard.tugas.create', [
             'subjects' => $subject
         ]);
@@ -57,7 +59,9 @@ class DashboardTaskController extends Controller
 
     public function edit(Post $post)
     {
-        $subject = Subject::where('grade_id', auth()->user()->grade_id)->get();
+        // $subject = Subject::where('grade_id', auth()->user()->grade_id)->get();
+        $subject = Subject::get();
+
         return view('dashboard.tugas.edit', [
             'post' => $post,
             'subjects' => $subject

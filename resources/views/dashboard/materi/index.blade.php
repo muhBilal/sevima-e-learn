@@ -31,7 +31,7 @@
       </thead>
       <tbody>
         @foreach ($posts as $post)
-        @if($post->subject->grade_id == auth()->user()->grade_id)
+        {{-- @if($post->subject->grade_id == auth()->user()->grade_id) --}}
             <tr>
                 <th>{{ $loop->iteration }}</th>
                 <td>{{ $post->subject->name }}</td>
@@ -56,7 +56,7 @@
                         </form>
                     </td>
             </tr>
-        @endif
+        {{-- @endif --}}
         @endforeach
       </tbody>
     </table>

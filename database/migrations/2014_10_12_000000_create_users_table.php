@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->id('id_biodata');
             $table->unsignedBigInteger('grade_id');
             $table->string('name');
             $table->string('level')->nullable();

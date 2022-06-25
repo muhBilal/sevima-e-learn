@@ -26,7 +26,6 @@ class SubjectController extends Controller
 
     public function tugas(){
         $tugas = Post::where('tipe', 1)->with('subject')->get();
-
         return view('home.task.tugas', [
             'title' => 'Tugas',
             'posts' => $tugas
