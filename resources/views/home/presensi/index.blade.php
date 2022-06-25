@@ -27,19 +27,19 @@
         <div class="max-h-80 overflow-x-auto overflow-x-auto sm:-mx-6 lg:-mx-8 w-full">
           <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div class="overflow-hidden">
-              <table class="min-w-full border text-center">
-                <thead class="border-b">
+              <table class="min-w-full border text-center table-auto">
+                <thead class="border-b bg-blue-400 text-white">
                   <tr>
-                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r">
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4 border-r">
                       Nama
                     </th>
-                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r">
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4 border-r">
                       Tanggal
                     </th>
-                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r">
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4 border-r">
                       Jam Masuk
                     </th>
-                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">
                       Jam Keluar
                     </th>
                   </tr>
@@ -101,7 +101,7 @@
     <script src="{{ asset('js/date.js') }}"></script>
     <script src="{{ asset('AdminLte/plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ asset('AdminLte/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-    @include('sweetalert::alert')
+    {{-- @include('sweetalert::alert') --}}
 
 </div>
 @endsection

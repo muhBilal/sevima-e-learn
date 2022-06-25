@@ -13,9 +13,9 @@ class RedirectIfAuthenticated
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param  \Closure  $next
      * @param  string|null  ...$guards
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     * @return mixed
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
@@ -23,7 +23,13 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                $user = Auth::user();
+                if ($user->level == 'guru') {
+                    return redirect()->intended('dashboard');
+                } elseif ($user->level == 'siswa') {
+                    return redirect()->intended('home');
+                }
+                // return redirect(RouteServiceProvider::HOME);
             }
         }
 

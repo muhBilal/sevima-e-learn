@@ -13,19 +13,24 @@
     <title>{{ $title }}</title>
 </head>
 
-<body class="bg-bwhite">
+<body class="">
+    <div class="flex">
+        {{-- sidebar --}}
+        <div>
+            @include('home.partials.sidebar')
+        </div>
+        {{-- content --}}
+        <div style="width: 100%">
+            @include('home.partials.header')
+            @yield('content')
+        </div>
+    </div>
 
-    <!-- header -->
-@include('partials.header')
 
-    {{-- content --}}
-@yield('content')
-
-<script>
-    feather.replace()
-</script>
-<script src="{{ mix('js/app.js') }}"></script>
-
+    <script>
+        feather.replace()
+    </script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>

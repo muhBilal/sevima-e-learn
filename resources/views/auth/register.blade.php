@@ -2,7 +2,10 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <div class="flex mt-8">
+                    <img src="{{ asset('img/logo.png') }}" class="lg:w-20 md:w-16 w-12 h-full" alt="">
+                    <h1 class="font-bserif text-bblue lg:text-6xl md:text-4xl sm:text-2xl text-xl font-bold">BeSmart</h1>
+                </div>
             </a>
         </x-slot>
 
@@ -19,9 +22,32 @@
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
+            {{-- grade --}}
+            <div class="mt-3">
+                <x-label for="grade_id" :value="__('Kelas ')" />
+                <select class="rounded-md shadow-sm border-gray-300" name="grade_id">
+                    @foreach ($grades as $grade)
+                    @if ( old('grade_id') == $grade->id)
+                    <option value="{{ $grade->id }}" selected>{{ $grade->grade }}</option>
+                    @else
+                    <option value="{{ $grade->id }}">{{ $grade->grade }}</option>
+                    @endif
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mt-3">
+                {{-- <label for="grade_id" class="form-label">Grade</label> --}}
+                <x-label for="level" :value="__('Status')" />
+                <select class="rounded-md shadow-sm border-gray-300" name="level">
+                        <option value="siswa">siswa</option>
+                        <option value="guru">guru</option>
+                </select>
+            </div>
+
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="email" :value="__('email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
@@ -50,10 +76,13 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
-                    {{ __('Register') }}
+                <x-button class="ml-4" >
+                    <a href="{{  route('login') }}">
+                    {{ __('Register') }}</a>
                 </x-button>
             </div>
         </form>
+
+
     </x-auth-card>
 </x-guest-layout>

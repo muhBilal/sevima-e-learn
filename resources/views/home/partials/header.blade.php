@@ -1,4 +1,4 @@
-<div class="filter drop-shadow bg-bwhite w-full h-auto rounded-sm px-2 py-1">
+<div class="filter drop-shadow bg-bwhite w-full h-auto rounded-sm px-2 py-1 py-5"> 
     <div class="flex">
         <div class="bg-balt lg:w-24 md:w-20 sm:w-16 w-14 my-1 mx-1">
             <img src="{{ asset('img/user-profille.png') }}" class="lg:w-24 md:w-20 sm:w-16 w-14" alt="">

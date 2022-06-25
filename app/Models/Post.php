@@ -7,7 +7,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-
 class Post extends Model
 {
     use HasFactory, Sluggable;

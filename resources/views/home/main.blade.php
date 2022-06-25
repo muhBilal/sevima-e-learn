@@ -17,7 +17,8 @@
 
 </head>
 
-<body class="bg-bwhite lg:px-12 md:px-10 sm:px-8 px-6 lg:py-10 md:py-5 sm:py-4 py-3">
+{{-- <body class="bg-bwhite lg:px-12 md:px-10 sm:px-8 px-6 lg:py-10 md:py-5 sm:py-4 py-3"> --}}
+<body class="bg-bwhite">
 
     @yield('container')
 

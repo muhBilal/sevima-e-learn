@@ -2,85 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreBiodataRequest;
-use App\Http\Requests\UpdateBiodataRequest;
+use Illuminate\Http\Request;
 use App\Models\Biodata;
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class BiodataController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function index(){
+        return view('home.biodata.index', [
+            'title' => 'Biodata',
+            'biodata' => Biodata::where('user_id', auth()->user()->id)->get() ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function edit(Biodata $biodata){
+        return view('home.biodata.edit', [
+            'title' => 'Edit Biodata',
+            'biodata' => $biodata,
+            'users' => User::all()
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreBiodataRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreBiodataRequest $request)
-    {
-        //
-    }
+    public function update(Request $request, Biodata $biodata){
+        $rules = ([
+            'image' =>  'image|file|max:2048',
+            'tgl_lahir' => 'required',
+            'nisn' => 'required|min:8|max:12',
+            'no_hp' => 'required|min:11|max:14',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'nama_ayah' => 'required|max:30',
+            'nama_ibu' => 'required|max:30',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Biodata  $biodata
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Biodata $biodata)
-    {
-        //
-    }
+        $validatedData = $request->validate($rules);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Biodata  $biodata
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Biodata $biodata)
-    {
-        //
-    }
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateBiodataRequest  $request
-     * @param  \App\Models\Biodata  $biodata
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateBiodataRequest $request, Biodata $biodata)
-    {
-        //
-    }
+        $validatedData['user_id'] = auth()->user()->id;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Biodata  $biodata
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Biodata $biodata)
-    {
-        //
+        $biodata::where('id', $biodata->id)
+            ->update($validatedData);
+
+        return redirect()->route('biodata.show')->with('success', 'Biodata has been Updated!');
     }
 }

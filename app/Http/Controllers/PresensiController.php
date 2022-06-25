@@ -2,85 +2,69 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePresensiRequest;
-use App\Http\Requests\UpdatePresensiRequest;
 use App\Models\Presensi;
+use DateTime;
+use DateTimeZone;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Http\Request;
 
 class PresensiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function index(){
+        return view('home.presensi.index', [
+            'title' => 'Presensi',
+            'presensi' => Presensi::with('user')->get()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+
+    public function postPresensiMasuk() {
+        $timezone = 'Asia/Jakarta';
+        $date = new DateTime('now', new DateTimeZone($timezone));
+        $tanggal = $date->format('Y-m-d');
+        $localtime = $date->format('H:i:s');
+
+        $presensi = Presensi::where([
+            ['user_id', '=', auth()->user()->id],
+            ['tgl', '=', $tanggal],
+        ])->first();
+        if ($presensi) {
+            return redirect('presensi')->with('warning', 'Maaf Anda Sudah Melakukan Presensi Masuk');
+        } else {
+            Presensi::create([
+                'user_id' => auth()->user()->id,
+                'tgl' => $tanggal,
+                'jam_masuk' => $localtime,
+            ]);
+        }
+        return redirect()->route('presensi')->with('success', 'Presensi Masuk Sukses');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePresensiRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StorePresensiRequest $request)
-    {
-        //
+    public function postPresensiKeluar() {
+        $timezone = 'Asia/Jakarta';
+        $date = new DateTime('now', new DateTimeZone($timezone));
+        $tanggal = $date->format('Y-m-d');
+        $localtime = $date->format('H:i:s');
+
+        $presensi = Presensi::where([
+            ['user_id', '=', auth()->user()->id],
+            ['tgl', '=', $tanggal],
+        ])->first();
+
+        $dt = [
+            'jam_keluar' => $localtime,
+        ];
+
+        if ($presensi->jam_keluar == "") {
+            $presensi->update($dt);
+            return redirect('presensi')->with('success', 'Presensi Keluar Sukses');
+        } else {
+            return redirect('presensi')->with('warning', 'Maaf Anda Sudah Melakukan Presensi Keluar');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Presensi  $presensi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Presensi $presensi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Presensi  $presensi
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Presensi $presensi)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdatePresensiRequest  $request
-     * @param  \App\Models\Presensi  $presensi
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdatePresensiRequest $request, Presensi $presensi)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Presensi  $presensi
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Presensi $presensi)
-    {
-        //
-    }
+    // public function rekapPresensiKaryawan() {
+    //     $presensi = Presensi::with('user')->get();
+    //     return view('user.rekap-presensi', compact('presensi'));
+    // }
 }

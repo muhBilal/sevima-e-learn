@@ -2,85 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSubjectRequest;
-use App\Http\Requests\UpdateSubjectRequest;
+use Illuminate\Http\Request;
 use App\Models\Subject;
+use App\Models\Post;
 
 class SubjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function index(Subject $Subject){
+        $materi = $Subject->posts->where('tipe', 0)->load('subject')->all();
+
+        return view('home.subject.materi', [
+            'title' => $Subject->name,
+            'posts' => $materi
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function show(Subject $Subject, Post $Post){
+        return view('home.subject.detail', [
+            'title' => ' | Subject',
+            'posts' => $Post->load('author'),
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreSubjectRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreSubjectRequest $request)
-    {
-        //
-    }
+    public function tugas(){
+        $tugas = Post::where('tipe', 1)->with('subject')->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Subject $subject)
-    {
-        //
+        return view('home.task.tugas', [
+            'title' => 'Tugas',
+            'posts' => $tugas
+        ]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Subject $subject)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateSubjectRequest  $request
-     * @param  \App\Models\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateSubjectRequest $request, Subject $subject)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Subject $subject)
-    {
-        //
+    public function tugas_detail(Post $Post){
+        return view('home.subject.detail', [
+            'title' => 'Tugas',
+            'posts' => $Post->load('author'),
+        ]);
     }
 }

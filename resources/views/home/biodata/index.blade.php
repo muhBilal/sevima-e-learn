@@ -2,10 +2,8 @@
 @extends('layouts.default')
 
 @section('content')
-
     @foreach ($biodata as $data)
-
-    <div class="container w-10/12 border border-gray-200 rounded-lg my-8 py-8">
+    <div class="container w-10/12 border border-gray-200 rounded-lg my-8 py-8 w-full">
         <div class="relative w-full">
             <div class="absolute lg:right-8 md:right-7 sm:right-6 right-5  md:top-0 top-3 bg-bblue  rounded-2xl
                 w-auto py-1 h-auto ml-4 mt-3">
@@ -81,10 +79,6 @@
                 </table>
             </div>
 
-        </div>
-        {{-- back button --}}
-        <div class="container bg-bblue w-24 rounded-2xl mt-8 lg:mx-16 md:mx-14 sm:mx-10 mx-8 px-2 py-2 ">
-            <a href="/home" class="flex text-center text-bwhite font-bold"><i data-feather="chevron-left" class="mr-1 text-bwhite "></i> Back</a>
         </div>
     @endforeach
 @endsection

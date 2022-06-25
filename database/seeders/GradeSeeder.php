@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Grade;
 
 class GradeSeeder extends Seeder
 {
@@ -13,6 +14,20 @@ class GradeSeeder extends Seeder
      */
     public function run()
     {
-        //
+                //kelas
+                Grade::create([
+                    'grade' => 'X',
+                    'slug' => 'x'
+                ]);
+
+                Grade::create([
+                    'grade' => 'XI',
+                    'slug' => 'xi'
+                ]);
+
+                Grade::create([
+                    'grade' => 'XII',
+                    'slug' => 'xii'
+                ]);
     }
 }
