@@ -15,6 +15,8 @@
     {{-- feather icon --}}
     <script src="{{ asset('https://unpkg.com/feather-icons') }}"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 {{-- <body class="bg-bwhite lg:px-12 md:px-10 sm:px-8 px-6 lg:py-10 md:py-5 sm:py-4 py-3"> --}}

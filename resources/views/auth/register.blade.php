@@ -36,11 +36,10 @@
                 </select>
             </div>
 
-            <div class="mt-3">
-                {{-- <label for="grade_id" class="form-label">Grade</label> --}}
+            <div class="mt-3 hidden">
                 <x-label for="level" :value="__('Status')" />
                 <select class="rounded-md shadow-sm border-gray-300" name="level">
-                        <option value="siswa">siswa</option>
+                        <option value="siswa" @checked(true)>siswa</option>
                         <option value="guru">guru</option>
                 </select>
             </div>
