@@ -57,7 +57,7 @@
                             <input type="hidden" name="post_id" value="{{ $posts->id }}">
                             {{-- cht --}}
                             <div class="mt-3">
-                                <textarea name="message" rows="3" class="w-full h-16"></textarea>
+                                <textarea name="message" rows="3" class="w-full h-16 p-2"></textarea>
                                 <button type="submit"
                                     class="border-2 border-blue-500 rounded-lg font-bold text-white px-4 py-3 transition duration-300 ease-in-out bg-blue-500 hover:bg-white hover:text-black">
                                     Kirim
