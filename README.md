@@ -38,6 +38,7 @@ E learn merupakan sebuah aplikasi yang dibuat untuk memudahkan para guru dan sis
 6. jalankan program
 
     > npm install (untuk menjalankan laravel mix)
+ 
     > php artisan serve (untuk menjalankan port laravel)
 
 Power Point Presentasi E-Learn [disini](https://docs.google.com/presentation/d/1Hh7M0YF96U5FtT60qGU2AFNe2dg-oQ1e/edit?usp=sharing&ouid=114684963151695563814&rtpof=true&sd=true)
