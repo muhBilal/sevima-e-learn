@@ -22,16 +22,22 @@ E learn merupakan sebuah aplikasi yang dibuat untuk memudahkan para guru dan sis
 1.Jalankan Command 
     > composer install
     > npm install 
+    
 2. Buat database dengan nama e-learn
+ 
 3. Jalankan command untuk membuat file .env lalu sesuaikan dengan configurasi
     > cp .env.example .env
+    
 4. Lakukan migrasi dan seed data 
     > php artisan migrate --seed
-5. jalankan command untuk mendapatkan dompdf di folder vendor
-    > composer require dompdf/dompdf
+    
+6. jalankan command untuk mendapatkan dompdf di folder vendor
+    > composer require dompdf/dompdf\
+    
 6. jalankan program
     > npm install (untuk menjalankan laravel mix)
     > php artisan serve (untuk menjalankan port laravel)
 
 User Manual E-Learn [disini](https://docs.google.com/presentation/d/1Hh7M0YF96U5FtT60qGU2AFNe2dg-oQ1e/edit?usp=sharing&ouid=114684963151695563814&rtpof=true&sd=true)
+<br>
 atau bisa di lihat di E-Learn.pptx
