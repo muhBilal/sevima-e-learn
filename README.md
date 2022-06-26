@@ -20,6 +20,7 @@ E learn merupakan sebuah aplikasi yang dibuat untuk memudahkan para guru dan sis
 ## Instalasi
 
 1.Jalankan Command 
+
     > composer install
     > npm install 
     
