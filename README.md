@@ -36,6 +36,7 @@ E learn merupakan sebuah aplikasi yang dibuat untuk memudahkan para guru dan sis
     > composer require dompdf/dompdf\
     
 6. jalankan program
+
     > npm install (untuk menjalankan laravel mix)
     > php artisan serve (untuk menjalankan port laravel)
 
